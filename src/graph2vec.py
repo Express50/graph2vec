@@ -62,7 +62,7 @@ def dataset_reader(path):
     name = path.strip(".edgelist").split("\\")[-1]
     graph = nx.read_edgelist(path, create_using=nx.DiGraph(), data=True)
 
-    features = nx.degree(graph, weight='weight')
+    features = dict(nx.degree(graph, weight='weight'))
     features = {str(k):v for k,v, in features.items()}
     return graph, features, name
 
